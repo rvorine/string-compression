@@ -3,18 +3,19 @@ function compress(input) {
     return "";
   }
 
-  let compressed = "";
+  const parts = [];
   let count = 1;
 
   for (let i = 1; i <= input.length; i++) {
     if (i < input.length && input[i] === input[i - 1]) {
       count++;
     } else {
-      compressed += `${input[i - 1]}${count}`;
+      parts.push(`${input[i - 1]}${count}`);
       count = 1;
     }
   }
 
+  const compressed = parts.join("");
   return compressed.length < input.length ? compressed : input;
 }
 

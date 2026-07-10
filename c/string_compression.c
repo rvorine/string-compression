@@ -4,13 +4,14 @@
 
 char *compress(const char *input) {
     size_t len = strlen(input);
+    const size_t max_compressed_per_char = 2;
     if (len == 0) {
         char *empty = malloc(1);
         if (empty) empty[0] = '\0';
         return empty;
     }
 
-    char *buffer = malloc(len * 2 + 1);
+    char *buffer = malloc(len * max_compressed_per_char + 1);
     if (!buffer) return NULL;
 
     size_t out = 0;
